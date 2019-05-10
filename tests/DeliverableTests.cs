@@ -6,13 +6,13 @@ namespace Composition_And_Delegation.Tests
 {
     public class DeliverableTests
     {
-        private static Technician technician = new Technician("Entregable");
+        private static Technician technician = new Technician("Entregable", "");
 
         [Fact]
         public void TestNewSongHasZeroLikes()
         {
             const string name = "Entregable";
-            ILikeable song = new Deliverable(name, technician);
+            ILikeable song = new Deliverable(name, technician, "");
 
             Assert.Equal(0, song.Likes);
         }
@@ -21,7 +21,7 @@ namespace Composition_And_Delegation.Tests
         public void TestLikeAddLikes()
         {
             const string name = "Entregable";
-            ILikeable song = new Deliverable(name, technician);
+            ILikeable song = new Deliverable(name, technician, "");
 
             song.Like();
 
@@ -32,7 +32,7 @@ namespace Composition_And_Delegation.Tests
         public void TestUnlikeRemoveLikes()
         {
             const string name = "Entregable";
-            ILikeable song = new Deliverable(name, technician);
+            ILikeable song = new Deliverable(name, technician, "");
 
             song.Like();
             song.Unlike();

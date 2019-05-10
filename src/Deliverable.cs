@@ -11,7 +11,7 @@ namespace Composition_And_Delegation
     /// <summary>
     /// Un entregable que me puede gustar o no.
     /// </summary>
-    public class Deliverable
+    public class Deliverable : ILikeable
     {
         private String name;
 
@@ -53,6 +53,24 @@ namespace Composition_And_Delegation
             get
             {
                 return this.author;
+            }
+        }
+
+        public void Like()
+        {
+
+        }
+
+        public void Unlike()
+        {
+
+        }
+
+        public int Likes
+        {
+            get
+            {
+                return 0;
             }
         }
     }

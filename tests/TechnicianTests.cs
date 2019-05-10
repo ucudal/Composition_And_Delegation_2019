@@ -10,7 +10,7 @@ namespace Composition_And_Delegation.Tests
         public void TestNewActorHasZeroLikes()
         {
             const string name = "Técnico";
-            ILikeable actor = new Technician(name);
+            ILikeable actor = new Technician(name, "");
 
             Assert.Equal(0, actor.Likes);
         }
@@ -19,7 +19,7 @@ namespace Composition_And_Delegation.Tests
         public void TestLikeAddLikes()
         {
             const string name = "Técnico";
-            ILikeable actor = new Technician(name);
+            ILikeable actor = new Technician(name, "");
 
             actor.Like();
 
@@ -30,7 +30,7 @@ namespace Composition_And_Delegation.Tests
         public void TestUnlikeRemoveLikes()
         {
             const string name = "Técnico";
-            ILikeable actor = new Technician(name);
+            ILikeable actor = new Technician(name, "");
 
             actor.Like();
             actor.Unlike();

@@ -11,7 +11,7 @@ namespace Composition_And_Delegation
     /// <summary>
     /// Un técnico que me puede gustar o no.
     /// </summary>
-    public class Technician
+    public class Technician : ILikeable
     {
         private String name;
 
@@ -36,6 +36,24 @@ namespace Composition_And_Delegation
             get
             {
                 return this.name;
+            }
+        }
+
+        public void Like()
+        {
+
+        }
+
+        public void Unlike()
+        {
+
+        }
+
+        public int Likes
+        {
+            get
+            {
+                return 0;
             }
         }
     }
