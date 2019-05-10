@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Linq;
 
-namespace Composition_And_Delegation
+namespace Twitter
 {
 	/// <summary>
 	/// Credit to Danny Tuppeny: https://blog.dantup.com/2016/07/simplest-csharp-code-to-post-a-tweet-using-oauth/

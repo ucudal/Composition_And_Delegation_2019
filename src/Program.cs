@@ -22,14 +22,14 @@ namespace Composition_And_Delegation
             String name;
 
             name = "Técnico";
-            Technician technician = new Technician(name);
+            Technician technician = new Technician(name, @"Quentin.jpg");
             technician.Like();
             technician.Unlike();
 
             Console.WriteLine("{0} tiene {1} me gusta", name, technician.Likes);
 
             name = "Entregable";
-            ILikeable song = new Deliverable(name, technician);
+            ILikeable song = new Deliverable(name, technician, @"Kill Bill.jpg");
             song.Like();
             song.Like();
 

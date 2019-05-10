@@ -15,6 +15,8 @@ namespace Composition_And_Delegation
     {
         private String name;
 
+        private string thumbnail;
+
         private Technician author;
 
         /// <summary>
@@ -23,10 +25,11 @@ namespace Composition_And_Delegation
         /// <param name="name">El nombre del entregable.</param>
         /// <param name="author">El autor del entregable.</param>
         /// <returns>El entregable recién creado.</returns>
-        public Deliverable(String name, Technician author)
+        public Deliverable(String name, Technician author, string thumbnail)
         {
             this.name = name;
             this.author = author;
+            this.thumbnail = thumbnail;
         }
 
         /// <summary>

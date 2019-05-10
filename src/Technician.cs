@@ -15,13 +15,16 @@ namespace Composition_And_Delegation
     {
         private String name;
 
+        private string picture;
+
         /// <summary>
         /// Crea un nuevo técnico con los valores pasados como argumento.
         /// </summary>
         /// <param name="name">El nombre del técnico a crear.</param>
-        public Technician(String name)
+        public Technician(String name, string picture)
         {
             this.name = name;
+            this.picture = picture;
         }
 
         /// <summary>

@@ -4,10 +4,12 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
+using System;
+using Twitter;
+
+
 namespace Composition_And_Delegation
 {
- using System;
-
     /// <summary>
     /// Un ayudante para llevar la cuenta de veces que "me gusta" algo.
     /// </summary>
@@ -17,20 +19,25 @@ namespace Composition_And_Delegation
 
         private string tracked;
 
+        private string image;
+
         const string ConsumerKey = "<insert coin here>";
         const string ConsumerKeySecret = "<insert coin here>";
         const string AccessToken = "<insert coin here>";
         const string AccessTokenSecret = "<insert coin here>";
 
-        private TwitterApi twitter = new TwitterApi(ConsumerKey, ConsumerKeySecret, AccessToken, AccessTokenSecret);
+        // private TwitterApi twitter = new TwitterApi(ConsumerKey, ConsumerKeySecret, AccessToken, AccessTokenSecret);
+        private TwitterImage twitter = new TwitterImage(ConsumerKey, ConsumerKeySecret, AccessToken, AccessTokenSecret);
 
         /// <summary>
         /// Crea una nueva instancia.
         /// </summary>
         /// <param name="tracked">El nombre del elemento sobre el que contar los "me gusta".</param>
-        public LikesTracker(string tracked)
+        /// <param name="image">La imagen delemento sobre el que contar los "me gusta".</param>
+        public LikesTracker(string tracked, string image)
         {
             this.tracked = tracked;
+            this.image = image;
         }
 
         /// <summary>
@@ -53,7 +60,8 @@ namespace Composition_And_Delegation
         public void Add()
         {
             this.count = this.count + 1;
-            this.twitter.Tweet($"{this.tracked} tiene un nuevo like! :)").Wait();
+            // this.twitter.Tweet($"{this.tracked} tiene un nuevo like! :)").Wait();
+            this.twitter.PublishToTwitter($"{this.tracked} tiene un nuevo like! :)", this.image);
         }
 
         /// <summary>
@@ -64,7 +72,9 @@ namespace Composition_And_Delegation
             if (this.count > 0)
             {
                 this.count = this.count - 1;
-                this.twitter.Tweet($"{this.tracked} tiene un nuevo like! :)").Wait();
+                // this.twitter.Tweet($"{this.tracked} tiene un like menos :(").Wait();
+                this.twitter.PublishToTwitter($"{this.tracked} tiene un like menos :(", this.image);
+
             }
         }
     }
