@@ -1,0 +1,71 @@
+//------------------------------------------------------------------------------
+// <copyright file="LikesTracker.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//------------------------------------------------------------------------------
+
+namespace Composition_And_Delegation
+{
+ using System;
+
+    /// <summary>
+    /// Un ayudante para llevar la cuenta de veces que "me gusta" algo.
+    /// </summary>
+    public class LikesTracker
+    {
+        private Int32 count;
+
+        private string tracked;
+
+        const string ConsumerKey = "<insert coin here>";
+        const string ConsumerKeySecret = "<insert coin here>";
+        const string AccessToken = "<insert coin here>";
+        const string AccessTokenSecret = "<insert coin here>";
+
+        private TwitterApi twitter = new TwitterApi(ConsumerKey, ConsumerKeySecret, AccessToken, AccessTokenSecret);
+
+        /// <summary>
+        /// Crea una nueva instancia.
+        /// </summary>
+        /// <param name="tracked">El nombre del elemento sobre el que contar los "me gusta".</param>
+        public LikesTracker(string tracked)
+        {
+            this.tracked = tracked;
+        }
+
+        /// <summary>
+        /// Un entero que representa cuánto gusta.
+        /// </summary>
+        /// <returns>La diferencia entre las veces que se agregó un "me gusta" mediante <see cref="LikesTracker.Add"/>
+        /// menos las veces que se quitó un me gusta" mediante mediante <see cref="LikesTracker.Remove"/>. Mayor o igual
+        /// que cero.</returns>
+        public Int32 Count
+        {
+            get
+            {
+                return this.count;
+            }
+        }
+
+        /// <summary>
+        /// Aumenta <see cref="LikesTracker.Count"/> en uno y lo publica en Twitter.
+        /// </summary>
+        public void Add()
+        {
+            this.count = this.count + 1;
+            this.twitter.Tweet($"{this.tracked} tiene un nuevo like! :)").Wait();
+        }
+
+        /// <summary>
+        /// Disminuye <see cref="LikesTracker.Count"/> en uno si es mayor que cero y lo publica en Twitter.
+        /// </summary>
+        public void Remove()
+        {
+            if (this.count > 0)
+            {
+                this.count = this.count - 1;
+                this.twitter.Tweet($"{this.tracked} tiene un nuevo like! :)").Wait();
+            }
+        }
+    }
+}
